@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import './Person/Person.css';
 
 class App extends Component {
   state = {
@@ -14,7 +13,6 @@ class App extends Component {
   };
 
   switchNameHandler = (newName) => {
-    console.log('This event', this);
     // console.log('Was clicked!');
     // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
     this.setState({
@@ -37,11 +35,21 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+    };
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button onClick={(e) => this.switchNameHandler('Maximilian.!!')}>
+        <button
+          style={style}
+          onClick={(e) => this.switchNameHandler('Maximilian.!!')}
+        >
           Switch Name
         </button>
         <Person
