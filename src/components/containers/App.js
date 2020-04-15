@@ -28,6 +28,11 @@ class App extends Component {
     console.log('[App.js] component did mount.!');
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[app.js] should component updated.!');
+    return true;
+  }
+
   nameChangedHandler = (event, id) => {
     console.log('name change');
     const personIndex = this.state.persons.findIndex((person) => {
@@ -74,7 +79,7 @@ class App extends Component {
         <Cockpit
           title={this.props.appTitle}
           showPerson={this.state.showPerson}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           toggle={this.togglePersonHandler}
         />
         {persons}
