@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .red {
   color: red;
 }
@@ -10,24 +6,25 @@
   font-weight: bold;
 }
 
-.Button {
+Button {
   background-color: green;
   font: inherit;
   border: none;
   padding: 8px;
   cursor: pointer;
   color: white;
+  margin-left: 10px;
 }
 
-.Button:hover {
+Button:hover {
   background-color: lightgreen;
   color: black;
 }
 
-.Button.Red {
+Button.Red {
   background-color: red;
 }
 
-.Button.Red:hover {
+Button.Red:hover {
   background-color: salmon;
 }
