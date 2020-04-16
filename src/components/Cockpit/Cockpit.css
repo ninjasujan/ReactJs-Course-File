@@ -13,6 +13,7 @@ Button {
   padding: 8px;
   cursor: pointer;
   color: white;
+  margin-left: 10px;
 }
 
 Button:hover {

@@ -1,13 +1,18 @@
 import classes from './Cockpit.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const cockpit = (props) => {
+  const toggleButtonRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit.js] useEffects');
     // can send HTTP request
-    setTimeout(() => {
-      alert('Component loaded.!');
-    }, 1000);
+    // setTimeout(() => {
+    //   alert('Component loaded.!');
+    // }, 1000);
+
+    toggleButtonRef.current.click();
+
     return () => {
       console.log('Clean up work');
     };
@@ -33,9 +38,10 @@ const cockpit = (props) => {
     <div className={classes.cockpit}>
       <h1>{props.title}</h1>
       <p className={classList.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={props.toggle}>
+      <button ref={toggleButtonRef} className={btnClass} onClick={props.toggle}>
         Persons List
       </button>
+      <button onClick={props.login}>LogIn</button>
     </div>
   );
 };
