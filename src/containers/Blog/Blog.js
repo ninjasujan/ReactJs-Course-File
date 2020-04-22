@@ -12,7 +12,6 @@ class Blog extends Component {
   };
 
   selectPostHandler = (id) => {
-    console.log(id);
     this.setState({
       selectedPost: id,
     });
