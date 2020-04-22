@@ -17,7 +17,7 @@ class NewPost extends Component {
       userId: 1,
     };
     axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
+      .post('/posts', {
         method: 'POST',
         body: {
           ...data,
