@@ -3,7 +3,8 @@ import './Blog.css';
 // import axios from 'axios';
 // import axios from '../../axios';
 import Posts from './Posts/Posts';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
   render() {
@@ -13,16 +14,26 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <a href="/">HOME</a>
+                <Link to="/">HOME</Link>
               </li>
               <li>
-                <a href="/new-post">NEW POST</a>
+                <Link
+                  to={{
+                    // pathname: this.props.match.url + '/new-post',
+                    pathname: '/new-post',
+                    hash: '#submit',
+                    search: '?quick-submit=true',
+                  }}
+                >
+                  NEW POST
+                </Link>
               </li>
             </ul>
           </nav>
         </header>
         {/* <Route path="/" exact render={() => <h1>Home</h1>} /> */}
-        <Route exact component={Posts} />
+        <Route path="/" exact component={Posts} />
+        <Route path="/new-post" exact component={NewPost} />
       </div>
     );
   }
