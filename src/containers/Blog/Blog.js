@@ -3,7 +3,7 @@ import './Blog.css';
 // import axios from 'axios';
 // import axios from '../../axios';
 import Posts from './Posts/Posts';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
@@ -14,10 +14,21 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <Link to="/">HOME</Link>
+                <NavLink
+                  to="/"
+                  exact
+                  activeClassName="active"
+                  activeStyle={{
+                    textDecoration: 'underline',
+                  }}
+                >
+                  HOME
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
+                  exact
+                  activeClassName="active"
                   to={{
                     // pathname: this.props.match.url + '/new-post',
                     pathname: '/new-post',
@@ -26,7 +37,7 @@ class Blog extends Component {
                   }}
                 >
                   NEW POST
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>
