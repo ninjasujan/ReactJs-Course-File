@@ -7,6 +7,9 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
+  state = {
+    auth: true,
+  };
   render() {
     return (
       <div>
@@ -44,8 +47,11 @@ class Blog extends Component {
         {/* <Route path="/" exact render={() => <h1>Home</h1>} /> */}
 
         <Switch>
-          <Route path="/new-post" exact component={NewPost} />
+          {this.state.auth ? (
+            <Route path="/new-post" exact component={NewPost} />
+          ) : null}
           <Route path="/posts" component={Posts} />
+          <Route render={() => <h1>404 Not found</h1>} />
         </Switch>
       </div>
     );
