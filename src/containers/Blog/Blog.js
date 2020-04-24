@@ -3,7 +3,7 @@ import './Blog.css';
 // import axios from 'axios';
 // import axios from '../../axios';
 import Posts from './Posts/Posts';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {

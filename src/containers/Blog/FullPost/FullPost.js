@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './FullPost.css';
+import { Redirect } from 'react-router-dom';
 
 class FullPost extends Component {
   state = {
     loadedPost: null,
   };
   componentDidMount() {
-    console.log(this.props);
+    this.loadPost();
+  }
+
+  componentDidUpdate() {
+    this.loadPost();
+  }
+
+  loadPost = () => {
     if (this.props.match.params.id) {
       if (
         !this.state.loadedPost ||
         (this.state.loadedPost &&
-          this.state.loadedPost.id !== this.props.match.params.id)
+          this.state.loadedPost.id != this.props.match.params.id)
       ) {
         axios
           .get('/posts/' + this.props.match.params.id)
@@ -26,12 +34,12 @@ class FullPost extends Component {
           });
       }
     }
-  }
+  };
 
   deletePostHandler = () => {
     console.log('delete handler');
     axios
-      .delete('/posts/' + this.props.id)
+      .delete('/posts/' + this.props.match.params.id)
       .then((response) => {
         console.log(response);
       })
