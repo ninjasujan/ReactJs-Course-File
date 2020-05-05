@@ -1,38 +1,17 @@
-import * as actionTypes from '../store/actions';
+import * as actionTypes from '../actions';
 
 const initialState = {
-  counter: 0,
   results: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.INCREMENT:
-      return {
-        ...state,
-        counter: state.counter + 1,
-      };
-    case actionTypes.DECREMENT:
-      return {
-        ...state,
-        counter: state.counter - 1,
-      };
-    case actionTypes.ADD:
-      return {
-        ...state,
-        counter: state.counter + action.val,
-      };
-    case actionTypes.SUBTRACT:
-      return {
-        ...state,
-        counter: state.counter - action.val,
-      };
     case actionTypes.STORE_RESULT:
       return {
         ...state,
         results: state.results.concat({
           id: new Date().getTime(),
-          value: state.counter,
+          value: action.results,
         }),
       };
     case actionTypes.DELETE_RESULT:
@@ -52,5 +31,8 @@ const reducer = (state = initialState, action) => {
 };
 // push method not mutate the original array
 // concat returns a new array immutable way of adding the element to array
+
+// inside the sub-reducer access to global state is prohibited
+// only we can access our local state
 
 export default reducer;
