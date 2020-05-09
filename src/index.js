@@ -1,34 +1,25 @@
+//
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import axios from 'axios';
+import { createStore, combineReducers } from 'redux';
+import counterReducer from './store/reducers/counter';
+import resultReducer from './store/reducers/results';
+import { Provider } from 'react-redux';
 
-axios.defaults.baseURL = 'http://jsonplaceholder.typicode.com';
-axios.defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+const rootReducer = combineReducers({
+  ctr: counterReducer,
+  res: resultReducer,
+});
 
-axios.interceptors.request.use(
-  (request) => {
-    console.log(request);
-    return request;
-  },
-  (error) => {
-    console.log(error);
-    return Promise.reject(error);
-  }
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
-
-axios.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    console.log(error);
-    return Promise.reject(error);
-  }
-);
-
-ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
